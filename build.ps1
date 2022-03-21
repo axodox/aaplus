@@ -14,6 +14,7 @@ Get-Content "$env:temp\vcvars.txt" | Foreach-Object {
 }
 
 # Build all platforms
+Write-Host 'Building library...' -ForegroundColor Magenta
 $projectPath = (Get-Location).Path + "\lib\AALib.vcxproj"
 
 $jobs = @()
@@ -26,3 +27,17 @@ $jobs += Start-Job -ScriptBlock { param($path) MSBuild.exe $path -p:Configuratio
 Wait-Job $jobs
 
 #Package output
+Write-Host 'Packaging output...' -ForegroundColor Magenta
+Remove-Item ./nuget/lib -Recurse -ErrorAction Ignore
+Remove-Item ./nuget/include -Recurse -ErrorAction Ignore
+Remove-Item ./nuget/docs -Recurse -ErrorAction Ignore
+
+New-Item ./nuget/lib -ItemType Directory -ErrorAction Ignore
+New-Item ./nuget/include -ItemType Directory -ErrorAction Ignore
+
+Copy-Item ./lib/bin/* ./nuget/lib -Recurse -Force
+Copy-Item ./lib/*.h ./nuget/include -Force
+Copy-Item ./docs ./nuget -Recurse -Force
+Copy-Item ./license.txt ./nuget/license.txt -Force
+
+.\nuget.exe pack ./nuget/AAPlus.nuspec
