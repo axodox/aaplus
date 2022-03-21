@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <!-- The identifier that must be unique within the hosting gallery -->
+    <id>AAPlus</id>
+
+    <!-- The package version number that is used when resolving dependencies -->
+    <version>2.42</version>
+
+    <!-- Authors contain text that appears directly on the gallery -->
+    <authors>PJ Naughter</authors>
+
+    <!-- Owners are typically nuget.org identities that allow gallery
+         users to earily find other packages by the same owners.  -->
+    <owners>axodox</owners>
+
+    <!-- License and project URLs provide links for the gallery -->
+    <license type="file">license.txt</license>
+    <projectUrl>http://www.naughter.com/aa.html</projectUrl>
+    <repository type="git" url="https://github.com/axodox/aaplus.git" branch="master"/>
+
+    <!-- The icon is used in Visual Studio's package manager UI -->
+    <!--<icon>icon.png</icon>-->
+
+    <!-- If true, this value prompts the user to accept the license when
+             installing the package. -->
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+
+    <!-- Any details about this particular release -->
+    <releaseNotes>Initial release</releaseNotes>
+
+    <!-- The description can be used in package manager UI. Note that the
+             nuget.org gallery uses information you add in the portal. -->
+    <title>AA+</title>
+    <description>A class framework for Computational Astronomy.</description>
+
+    <!-- Copyright information -->
+    <copyright>Copyright ©2021 PJ Naughter</copyright>
+
+    <!-- Tags appear in the gallery and can be used for tag searches -->
+    <tags>Astronomy</tags>
+  </metadata>
+
+  <!-- A readme.txt will be displayed when the package is installed -->
+  <files>
+    <file src="build\**" target="build" />
+    <file src="docs\**" target="docs" />
+    <file src="include\**" target="include" />
+    <file src="lib\**" target="lib" />
+    <file src="license.txt" target="" />
+  </files>
+</package>
